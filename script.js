@@ -1,15 +1,12 @@
 let max = 0;
-
 function readInput() {
     const inputElement = document.getElementById('userInput');
     const inputText = inputElement.value;
     max = parseInt(inputText, 10) || 0;
 }
-
 function getRandomInt() {
   return Math.floor(Math.random() * max);
 }
-
 function createButtons () {
     readInput();
     const buttonContainer = document.getElementById("buttonContainer");
@@ -23,7 +20,6 @@ function createButtons () {
   <br>`;
     }
 }
-
 function assignValue() {
   let secretButtonNumber = getRandomInt();
   for (let i = 0; i < max; ++i) {
@@ -41,13 +37,10 @@ function assignValue() {
       }
   }
 }
-
-
 document.getElementById('button-addon1').addEventListener('click', function() {
   createButtons();
   assignValue();
 });
-
 function showValueOnClick(buttonId) {
   const clickedButton = document.getElementById(buttonId);
   if (clickedButton) {
@@ -55,7 +48,6 @@ function showValueOnClick(buttonId) {
     clickedButton.textContent = buttonValue;
   }
 }
-
 $(document).ready(function() {
   createButtons();
   assignValue();
