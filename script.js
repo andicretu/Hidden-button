@@ -1,13 +1,13 @@
-let max = 0;
+let numberOfButtons = 0;
 
 function readInput() {
     const inputElement = document.getElementById('userInput');
     const inputText = inputElement.value;
-    max = parseInt(inputText, 10) || 0;
+    numberOfButtons = parseInt(inputText, 10) || 0;
 }
 
 function getRandomInt() {
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * numberOfButtons);
 }
 
 function createButtons () {
@@ -15,7 +15,7 @@ function createButtons () {
     const buttonContainer = document.getElementById("buttonContainer");
     buttonContainer.innerHTML = "";
 
-    for (let i = 0; i < max; ++i) {
+    for (let i = 0; i < numberOfButtons; ++i) {
     buttonContainer.innerHTML +=`
   <div>
     <button type="button" class="btn btn-primary" id="button${i + 1}">Button ${i + 1}</button>
@@ -26,10 +26,9 @@ function createButtons () {
 
 function assignValue() {
   let secretButtonNumber = getRandomInt();
-  for (let i = 0; i < max; ++i) {
+  for (let i = 0; i < numberOfButtons; ++i) {
     const button = document.getElementById(`button${i + 1}`);
     if(button) {
-      button.removeEventListener('click', showValueOnClick);
       button.addEventListener('click', function () {
         showValueOnClick(`button${i + 1}`);
       });
@@ -55,8 +54,3 @@ function showValueOnClick(buttonId) {
     clickedButton.textContent = buttonValue;
   }
 }
-
-$(document).ready(function() {
-  createButtons();
-  assignValue();
-});
